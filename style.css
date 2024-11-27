@@ -1,0 +1,467 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: black;
+    z-index: -11;
+}
+#background {
+    height: 100%;
+    width: 100%;
+    z-index: -22;
+    object-fit: cover;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+    pointer-events: none; 
+    z-index: 1;
+}
+.container {
+    display: flex;
+    width: 85%;
+    margin: 10vh 0vh;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* border: 2px solid blue; */
+
+}
+.formulaire  {
+    height: 600px ;
+    /* width : 350px ; */
+    flex: 1 1 300px;
+    background-color: rgba(179, 151, 151,0.35);
+    padding: 10px;
+    border-radius: 5px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+.formulaire::-webkit-scrollbar{
+    display: none;
+}
+.formulaire select {
+    height: 45px;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(4, 94, 4, 0.751);
+    outline: none;
+    border: none;
+}
+
+
+.formulaire form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+.form .stats {
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 10px;
+}
+.formulaire input {
+    height: 30px;
+    margin: 10px 0px;
+    border: none;
+    padding: 10px;
+    border-radius: 2px;
+}
+.formulaire button {
+    height: 40px;
+    width: 120px;
+    margin: 8px;
+    border-radius: 10px;
+    background-color: green;
+    align-self: center;
+}
+
+
+
+.fantasy {
+    height: 600px;
+    /* width: 750px; */
+    flex: 1 1 650px;
+    position: relative;
+   
+}
+.formation {
+    height: 100%;
+    width: 100%;
+}
+
+
+#formation-background {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    z-index: -1;
+    position: absolute;
+}
+.primary-players{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    /* display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(5,1fr); */
+}
+.card {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    
+} 
+.card:focus {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+
+.card img {
+    height: 130%;
+    width: 130%;
+    /* position: absolute; */
+    object-fit: contain;
+    z-index: -1; 
+}
+.card-content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12,minmax(0,1fr));
+    grid-template-rows: repeat(12,minmax(0,1fr));
+
+} 
+.card-content .player-position {
+    grid-area: 2/6/3/8 ;
+    /* background-color: blue; */
+    font-size: 10px;
+    height: 100%;
+    width: 100%;
+}
+.card-content .player-photo {
+    grid-area: 3/6/9/11;
+    padding: 2px;
+    /* background-color: red; */
+    
+}
+.card-content .player-photo #player-photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}
+.card-content .player-info {
+    grid-area: 3/3/8/5;
+    /* background-color: green; */
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.card-content .player-info .country {
+    height: 11px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-content .player-info .country img {
+    height: 90%;
+    width: 90%;
+    object-fit: cover;
+}
+.card-content .player-info .club {
+    height: 16px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-content .player-info .club img {
+    height: 100%;
+    width: 80%;
+    object-fit: cover;
+}
+
+.card-content .player-stats {
+    grid-area: 10/3/12/11;
+    margin-top: 2px;
+    /* background-color: white; */
+    
+    /* display: flex; */
+   
+}
+
+.card-content .player-stats .stats {
+    display: flex;
+    gap: 2.5px;
+}
+.card-content .player-stats .stats p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 5px;
+    font-weight: 500;
+
+}
+.card-content .player-stats .stats p span {
+    font-size: 7px;
+    font-weight: 600;
+}
+
+
+.card-content .player-name {
+    grid-area: 9/4/10/10;
+    /* background-color: aliceblue; */
+    margin-top: 1px ;
+    font-size: 7px;
+    font-weight: 500;
+    text-align: center;
+   
+}
+.card .delete {
+    position: absolute;
+    top: -0%;
+    right : -5%;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    z-index: 222;
+
+}
+.card .delete:hover {
+    scale: 1.2;
+}
+.carte .delete {
+    position: absolute;
+    top: -0%;
+    right : -5%;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    z-index: 222;
+
+}
+.carte .delete:hover {
+    scale: 1.2;
+}
+
+.goalkeeper {
+   bottom: 8%;
+   left: 43%;
+}
+.center-back-left {
+    bottom: 18%;
+    left: 28%;
+}
+.center-back-right{
+    bottom: 18%;
+    right: 28%;
+}
+.left-back {
+    bottom: 20%;
+    left: 7%;
+}
+.right-back {
+    bottom: 20%;
+    right: 7%;
+}
+.central-midfielder-left {
+    bottom: 46%;
+    left: 15%;
+}
+.central-midfielder-center {
+    bottom: 46%;
+    left: 44%;
+}
+.central-midfielder-right {
+    bottom: 46%;
+    right: 15% ;
+}
+.left-wing {
+    top: 15%;
+    left: 15%;
+}
+.right-wing {
+    top: 15%;
+    right: 15%;
+}
+.striker {
+    top: 10%;
+    left: 44%;
+}
+.formation-2 .central-midfielder-left {
+    bottom: 46%;
+    left: 28%;
+}
+.formation-2 .central-midfielder-right{
+    bottom: 46%;
+    right: 28%;
+}
+.formation-2 .left-midfielder {
+    bottom: 55%;
+    left: 8%;
+}
+.formation-2 .right-midfielder {
+    bottom: 55%;
+    right: 5%;
+}
+.formation-2 .striker-left {
+    top: 5%;
+    left: 30%;
+
+}
+.formation-2 .striker-right {
+    top: 5%;
+    right: 30%;
+}
+
+.reserve-players {
+    height: fit-content;
+    width: 85%;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    gap: 10px;
+    /* z-index: -1; */
+}
+.reserve-players .heading {
+    align-self: center;
+    font-size: 25px;
+    margin-top: -20px ;
+}
+.reserve-players .reserve-list {
+    flex-grow: 1;
+    display: flex;
+    /* overflow: auto; */
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center; 
+    padding: 20px;
+    /* width: 100%; */
+}
+.carte {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 22;
+    transform: scale(1.2);
+    color: black;
+}
+.carte #badge {
+    height: 130%;
+    width: 130%;
+    position: absolute;
+    object-fit: contain;
+    z-index: -1; 
+    align-self: center;
+}
+/* .reserve-players .reserve-list .reserve {
+    height: 150px;
+    width: 150px;
+} */
+
+ @media screen and (max-width: 800px) {
+    .container {
+        width: 90%;
+
+    }
+    .fantasy {
+        height: 800px;
+    }
+    .card {
+        height: 15% ;
+        width: 13%;
+    }
+ }
+ @media screen and (max-width:450px){
+    .container {
+        width: 97%;
+    }
+    .fantasy {
+        height: 500px;
+    }
+    .card {
+        height: 18%;
+        width: 15%;
+    }
+    .card-content .player-stats {
+        grid-area: 10/2/12/11;
+        font-size: 2px;
+        margin-top : 1px;
+    }
+    .card-content .player-stats .stats {
+        gap: 1.5px;
+        
+        font-weight: 400;
+    }
+    .card-content .player-stats .stats p {
+        font-size : 3.5px;
+        /* font-size: 3px;  */
+        gap:0.5px;
+    }
+    .card-content .player-stats .stats p span {
+        font-size: 4px;
+        font-weight: 400;
+    }
+    .card-content .player-name {
+        grid-area: 9/3/10/11;
+        font-size: 4px;
+    }
+    .card-content .player-info {
+        font-size: 7px;
+    }
+    .card-content .player-info .country {
+        height: 7px;
+        width: 9px;
+    }
+    .card-content .player-info .club {
+        height: 8px;
+        width: 10px;
+    }
+    .card-content .player-photo {
+        grid-area: 3/5/9/12;
+    }
+    .card-content .player-position {
+        font-size: 5px;
+    }
+ }
