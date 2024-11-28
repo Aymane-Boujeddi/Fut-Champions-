@@ -22,7 +22,7 @@ function changeform(position1,position2){
 
     position1.addEventListener("change" , (e)=>{
         e.preventDefault()
-        console.log(position1.value)
+        // console.log(position1.value)
         document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
         if(position1.value == 'goalkeeper'){
             document.querySelector('#goalkeeper').style.display = 'flex'
@@ -32,7 +32,7 @@ function changeform(position1,position2){
     }) 
     position2.addEventListener("change" , (e)=>{
         e.preventDefault()
-        console.log(position1.value)
+        // console.log(position1.value)
         document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
         if(position2.value == 'goalkeeper'){
             document.querySelector('#goalkeeper').style.display = 'flex'
@@ -47,6 +47,7 @@ function changeform(position1,position2){
 function displayPlayers(position,card){
     reserveList.innerHTML = ''
     players.forEach((player)=>{
+
         if(position == player.position){
            addPlayer(player)
            
@@ -57,9 +58,9 @@ function displayPlayers(position,card){
     })
     // swapPlayer(reserveList.querySelectorAll('.carte'),card)
     const reserveCards = reserveList.querySelectorAll('.carte')
-    console.log(reserveCards)
+    // console.log(reserveCards)
     reserveCards.forEach((reserveCard)=>{
-        console.log(reserveCard)
+        // console.log(reserveCard)
         reserveCard.onclick = function(e) {
               e.preventDefault()
               card.innerHTML = reserveCard.innerHTML
@@ -79,8 +80,7 @@ function displayPlayers(position,card){
                   
                   </div>`  
             })
-            // reserveCard.style.display = 'none'
-            deletePlayer(reserveCard)
+            reserveCard.style.display = 'none'
         
             
             
@@ -93,16 +93,41 @@ function displayPlayers(position,card){
         
     })
 }
-// function deletePlayer(reserveCard){
-//     document.querySelectorAll('.card').forEach((carte)=>{
-//         players.forEach((player)=>{
-//             const cardName = carte.querySelector('.player-name p').textContent
-//             if(cardName == player.name){
-//                 reserveCard.style.display = 'none'
-//             }
-//         })
-//     })
-// }
+function deletePlayer(reserves){
+    const cardscontent = document.querySelectorAll('.card .player-name p')
+    console.log(cardscontent)
+    // console.log(reserves)
+    cardscontent.forEach((cardcontent)=>{
+        // console.log(cardcontent.innerText)
+        const cardContentName = cardcontent.innerText
+        reserves.forEach((reserve)=>{
+            const reserveContentName = reserve.querySelector('.player-name p').innerText
+            // console.log(reserve.querySelector('.player-name p').innerText)
+            if(cardContentName == reserveContentName){
+                reserve.style.display = 'none'
+            }
+        })
+    })
+    
+    
+
+
+    // console.log(reserveCard)
+    // const reserveName = reserveCard.querySelector('.player-name p').textContent
+    // document.querySelectorAll('.card').forEach((carte)=>{
+    //     console.log(reserveName)
+    //     console.log(carte)
+    //     const cardPara = carte.querySelector('.player-name p')
+    //     // console.log(cardName)
+    //         if(cardPara){
+    //             const cardName = cardPara.textContent
+    //             if(cardName === reserveCard ){
+    //                 reserveCard.style.display = 'none'
+    //             }
+    //         }
+        
+    // })
+}
 // function swapPlayer(reserveCards,card) {
     
 // }
@@ -198,12 +223,23 @@ function addPlayer(player){
 }
 
 formationCards.forEach((card)=>{
+    reserveList.innerHTML = ''
+    // removeFocus(formationCards)
     card.onclick = function(e){
-        
+        // card.classList.add('focus')
+        // console.log(card.querySelector('#badge'))
         displayPlayers(card.classList[2],card)
+        deletePlayer(reserveList.querySelectorAll('.carte'))
+        // console.log(reserveList.querySelectorAll('.carte .player-name p'))
         if(reserveList.children.length == 0){
             reserveList.textContent =  'no player in this position'
         }
     }
 })
+
+// function removeFocus(formationCards) {
+//     formationCards.forEach((card)=>{
+//         card.classList.remove('focus')
+//     })
+// }
 
