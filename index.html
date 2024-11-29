@@ -1,227 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
     <script src="main.js" defer></script>
     <!-- <script src="data.js"></script> -->
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="background">
-        <img src="img/staduim.jpg" id="background" alt="background">
-        <div class="overlay"></div>
+      <img src="img/fifa-background-tqq9pxlhzeue8u6w.png" id="background" alt="background" />
+      <div class="overlay"></div>
     </div>
-    
-  <section class="container">
-    <section class="fantasy">
-        <div class="formation formation-1" style="display: none;">
-            <img src="img/stadium_background.webp" id="formation-background" alt="background">
-            <div class="primary-players">
-                <div class="card goalkeeper GK">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                  
-                </div>
-                <div class="card center-back-left CB">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card center-back-right CB">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card left-back LB">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card right-back RB">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card central-midfielder-left CM">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card central-midfielder-center CM">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                   
-                </div>
-                <div class="card central-midfielder-right CM">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card right-wing RW">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card left-wing LW">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card striker ST">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                
-            </div>
-       </div>
-        <div class="formation formation-2" >
-            <img src="img/stadium_background.webp" id="formation-background" alt="background">
-            <div class="primary-players">
-                <div class="card goalkeeper GK">
-                
-
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                  
-                  </div>
-                
-                <div class="card center-back-left CB">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                  
-                </div>
-                <div class="card center-back-right CB">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card left-back LB">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card right-back RB">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card central-midfielder-left CM">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card central-midfielder-right CM">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card right-midfielder RM">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card left-midfielder LM">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-
-                </div>
-                <div class="card striker-left ST">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                <div class="card striker-right ST">
-                    <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
-                    
-                </div>
-                
-            </div>
-       </div>
+    <section class="navbar">
+      <button onclick="changeFormation('.formation-1', '#position433')">
+        4-3-3
+      </button>
+      <button onclick="changeFormation('.formation-2', '#position442')">
+        4-4-2
+      </button>
+      <button onclick ='showContainer(".formulaire")'>Add Player</button>
+      <button onclick ='showContainer(".modify-players")'>Modify Player</button>
+      <button onclick ='showContainer(".delete-players")'>Delete Player</button>
     </section>
-    <section class="formulaire">
-        <div class="formation-selection">
-            <button onclick="changeFormation('.formation-1', '#position433')">4-3-3</button>
-            <button onclick="changeFormation('.formation-2', '#position442')">4-4-2</button>
+    <section class="container">
+      <section class="fantasy">
+        <div class="formation formation-1" style="display: none">
+          <img
+            src="img/stadium_background.webp"
+            id="formation-background"
+            alt="background"
+          />
+          <div class="primary-players">
+            <div class="card goalkeeper GK">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card center-back-left CB">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card center-back-right CB">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card left-back LB">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card right-back RB">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card central-midfielder-left CM">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card central-midfielder-center CM">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card central-midfielder-right CM">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card right-wing RW">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card left-wing LW">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card striker ST">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+          </div>
         </div>
-        <select name="position" id="position433" style="display: none;">
-            <option value="position">Position</option>
+        <div class="formation formation-2">
+          <img
+            src="img/stadium_background.webp"
+            id="formation-background"
+            alt="background"
+          />
+          <div class="primary-players">
+            <div class="card goalkeeper GK">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
 
-            <option value="goalkeeper">GK</option>
-            <option value="centerback">CB</option>
-            <option value="leftback">LB</option>
-            <option value="rightback">RB</option>
-            <option value="centermidfielder">CM</option>
-            <option value="leftwing">LW</option>
-            <option value="rightwing">RW</option>
-            <option value="striker">ST</option>
-            
-        </select>
-        <select name="position" id="position442" style="display: none;">
-            <option value="position">Position</option>
-            <option value="goalkeeper">GK</option>
-            <option value="centerback">CB</option>
-            <option value="leftback">LB</option>
-            <option value="rightback">RB</option>
-            <option value="centermidfielder">CM</option>
-            <option value="rightmidfielder">RM</option>
-            <option value="leftmidfielder">LM</option>
-            <option value="striker">ST</option>
-            
-        </select>
-        <form action="submit" class="form" id="regular-player" >
-            
-           
-            
-            <label for="playerName">Player name</label>
-            <input type="text" placeholder="Player Name">
-
-            <label for="overall">Overall</label>
-            <input type="number" min="20">
-            
-            <label for="shooting">Shooting</label>
-            <input type="number" min="20">
-
-            <label for="passing">Passing</label>
-            <input type="number" min="20">
-
-            <label for="dribling">Dribling</label>
-            <input type="number" min="20">
-
-            <label for="pace">Pace</label>
-            <input type="number" min="20">
-
-            <label for="defence">Defence</label>
-            <input type="number" min="20">
-
-            <label for="physique">Physique</label>
-            <input type="number" min="20">
-
-            <button type="submit">Add player</button>
-           
-        </form>
-        <form action="submit" class="form" id="goalkeeper" >
-            
-           
-            
-            <label for="playerName">Player name</label>
-            <input type="text" placeholder="Player Name">
-
-            <label for="overall">Overall</label>
-            <input type="number" min="20">
-            
-            <label for="diving">Diving</label>
-            <input type="number" min="20">
-
-            <label for="handling">Handling</label>
-            <input type="number" min="20">
-
-            <label for="kicking">Kicking</label>
-            <input type="number" min="20">
-
-            <label for="reflexes">Reflexes</label>
-            <input type="number" min="20">
-
-            <label for="speed">Speed</label>
-            <input type="number" min="20">
-          
-
-            <button type="submit">Add player</button>
-            
-
-        </form>
-
+            <div class="card center-back-left CB">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card center-back-right CB">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card left-back LB">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card right-back RB">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card central-midfielder-left CM">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card central-midfielder-right CM">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card right-midfielder RM">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card left-midfielder LM">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card striker-left ST">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+            <div class="card striker-right ST">
+              <img src="img/badge_gold.webp" id="badge" alt="gold-badge" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="available-players">
+        <div class="heading">
+          <p>Available players</p>
+        </div>
+        <div class="available-list"></div>
+      </section>
+      
     </section>
-  </section>
-  <section class="reserve-players">
-    <div class="heading">
-    <p>Reserve</p>    
-    </div>
-    <div class="reserve-list">
-       
-    </div>
-  </section>
-</body>
+    <section class="formulaire" id="pop-up" style="display: none;">
+      <!-- <div class="formation-selection">
+        <button onclick="changeFormation('.formation-1', '#position433')">
+          4-3-3
+        </button>
+        <button onclick="changeFormation('.formation-2', '#position442')">
+          4-4-2
+        </button>
+      </div> -->
+      <div class="close-btn" onclick="closeContainer('.formulaire')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M18 6L6 18M6 6l12 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <select name="position" id="position" >
+        <!-- <option value="position">Position</option> -->
+
+        <option value="goalkeeper">GK</option>
+        <option value="centerback">CB</option>
+        <option value="leftback">LB</option>
+        <option value="rightback">RB</option>
+        <option value="centermidfielder">CM</option>
+        <option value="rightmidfielder">RM</option>
+        <option value="leftmidfielder">LM</option>
+        <option value="leftwing">LW</option>
+        <option value="rightwing">RW</option>
+        <option value="striker">ST</option>
+      </select>
+      <!-- <select name="position" id="position442" >
+          <option value="position">Position</option>
+          <option value="goalkeeper">GK</option>
+          <option value="centerback">CB</option>
+          <option value="leftback">LB</option>
+          <option value="rightback">RB</option>
+          <option value="centermidfielder">CM</option>
+          <option value="rightmidfielder">RM</option>
+          <option value="leftmidfielder">LM</option>
+          <option value="striker">ST</option>
+          
+      </select> -->
+      <form action="submit" class="form" id="regular-player">
+        <input type="text" id="playerName" placeholder="Player Name" />
+    
+        <input type="number" id="overall" min="50" placeholder="Overall" />
+    
+        <input type="number" id="shooting" min="20" placeholder="Shooting min(20)" />
+    
+        <input type="number" id="passing" min="20" placeholder="Passing min(20)" />
+    
+        <input type="number" id="dribbling" min="20" placeholder="Dribbling min(20)" />
+    
+        <input type="number" id="pace" min="20" placeholder="Pace min(20)" />
+    
+        <input type="number" id="defence" min="20" placeholder="Defence min(20)" />
+    
+        <input type="number" id="physique" min="20" placeholder="Physique min(20)" />
+    
+        <input type="text" id="playerCountry" placeholder="Player country" />
+    
+        <input type="text" id="playerClub" placeholder="Player club" />
+    
+        <input type="url" id="playerPhoto" placeholder="Player photo (URL)" />
+    
+        <input type="url" id="countryFlag" placeholder="Player country flag (URL)" />
+    
+        <input type="url" id="clubLogo" placeholder="Player club logo (URL)" />
+    
+        <button type="submit">Add player</button>
+
+    </form>
+    
+      <form action="submit" class="form" id="goalkeeper">
+        <input type="text" id="playerName" placeholder="Player Name" />
+    
+        <input type="number" id="overall" min="50" placeholder="Overall" />
+    
+        <input type="number" id="diving" min="20" placeholder="Diving min(20)" />
+    
+        <input type="number" id="handling" min="20" placeholder="Handling min(20)" />
+    
+        <input type="number" id="kicking" min="20" placeholder="Kicking min(20)" />
+    
+        <input type="number" id="reflexes" min="20" placeholder="Reflexes min(20)" />
+    
+        <input type="number" id="speed" min="20" placeholder="Speed min(20)" />
+
+        <input type="number" id="positioning" min="20" placeholder="Positioning min(20)" />
+
+        <input type="text" id="playerCountry" placeholder="Player country" />
+    
+        <input type="text" id="playerClub" placeholder="Player club" />
+    
+        <input type="url" id="playerPhoto" placeholder="Player photo (URL)" />
+    
+        <input type="url" id="countryFlag" placeholder="Player country flag (URL)" />
+    
+        <input type="url" id="clubLogo" placeholder="Player club logo (URL)" />
+    
+        <button type="submit">Add player</button>
+    </form>
+    
+    </section>
+    <section class="modify-players"id="pop-up" style="display: none;">
+      <div class="close-btn" onclick="closeContainer('.modify-players')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M18 6L6 18M6 6l12 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>Modify player</h2>
+      <div class="modify-list">
+        
+      </div>
+    </section>
+    <section class="delete-players" id="pop-up" style="display: none;">
+      <div class="close-btn" onclick="closeContainer('.delete-players')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M18 6L6 18M6 6l12 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>Delete player</h2>
+      <div class="delete-list">
+
+      </div>
+    </section>
+  </body>
 </html>

@@ -1,46 +1,55 @@
-const position1 = document.querySelector('#position433')
+const position1 = document.querySelector('#position')
 const position2 = document.querySelector('#position442')
-const reserveList = document.querySelector('.reserve-list')
+const reserveList = document.querySelector('.available-list')
 const availablePlayers  = localStorage.getItem("players")
 const players = JSON.parse(availablePlayers)
 const formationCards = document.querySelectorAll('.card')
+let selectedForm = ''
 
-changeform(position1,position2)
+changeform(position1)
 
 
 function changeFormation(formation,select){
     document.querySelectorAll('.formation').forEach((element)=>{element.style.display = 'none'})
-    document.querySelectorAll('.formulaire select').forEach((select)=>{select.style.display = 'none'})
+    // document.querySelectorAll('.formulaire select').forEach((select)=>{select.style.display = 'none'})
     const selectedFormation = document.querySelector(formation)
     const selector = document.querySelector(select)
     selectedFormation.style.display = 'block'
-    selector.style.display = 'block'
+    // selector.style.display = 'block'
     
 }
-function changeform(position1,position2){
+function changeform(position1){
     document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
-
+  
     position1.addEventListener("change" , (e)=>{
         e.preventDefault()
         // console.log(position1.value)
         document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
         if(position1.value == 'goalkeeper'){
             document.querySelector('#goalkeeper').style.display = 'flex'
+            selectedForm = 'goalkeeper'
+            addPlayerForm(selectedForm)
+
+            
         }else {
             document.querySelector('#regular-player').style.display = 'flex'
+            selectedForm = 'regular'
+            addPlayerForm(selectedForm)
+
         }
     }) 
-    position2.addEventListener("change" , (e)=>{
-        e.preventDefault()
-        // console.log(position1.value)
-        document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
-        if(position2.value == 'goalkeeper'){
-            document.querySelector('#goalkeeper').style.display = 'flex'
-        }else {
-            document.querySelector('#regular-player').style.display = 'flex'
-        }
-    }) 
+    // position2.addEventListener("change" , (e)=>{
+    //     e.preventDefault()
+    //     // console.log(position1.value)
+    //     document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
+    //     if(position2.value == 'goalkeeper'){
+    //         document.querySelector('#goalkeeper').style.display = 'flex'
+    //     }else {
+    //         document.querySelector('#regular-player').style.display = 'flex'
+    //     }
+    // }) 
     document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
+    console.log(selectedForm)
 }
 
 
@@ -49,93 +58,97 @@ function displayPlayers(position,card){
     players.forEach((player)=>{
 
         if(position == player.position){
-           addPlayer(player)
-           
+           addAvailablePlayer(player,reserveList)
+        // removePlayer(reserveList.querySelectorAll('.carte'))
+
         }
-        
-        
+        removePlayer(reserveList.querySelectorAll('.carte'))
         
     })
-    // swapPlayer(reserveList.querySelectorAll('.carte'),card)
     const reserveCards = reserveList.querySelectorAll('.carte')
-    // console.log(reserveCards)
     reserveCards.forEach((reserveCard)=>{
-        // console.log(reserveCard)
         reserveCard.onclick = function(e) {
               e.preventDefault()
-              card.innerHTML = reserveCard.innerHTML
-              const deleteIcon = document.createElement('div')
-              deleteIcon.classList.add('delete')
-              deleteIcon.innerHTML = `
+             
+                card.innerHTML = reserveCard.innerHTML
+                const deleteIcon = document.createElement('div')
+                deleteIcon.classList.add('delete')
+                deleteIcon.innerHTML = `
+                  <i class="fa-solid fa-circle-minus" style="color: #ff0000;"></i>
+                `
+              card.prepend(deleteIcon)
+              deleteIcon.addEventListener('click', () => {
+                  card.innerHTML = ` 
+                      <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
+                    `  
+              })
+              reserveCard.style.display = 'none'
               
-                <i class="fa-solid fa-circle-minus" style="color: #ff0000;"></i>
-              `
-
-            card.prepend(deleteIcon)
-            deleteIcon.addEventListener('click', () => {
-                card.innerHTML = ` <div class="card">
-                
-
-                    <img src="img/badge_gold.webp" alt="gold-badge">
-                  
-                  </div>`  
-            })
-            reserveCard.style.display = 'none'
+            displayPlayers(position,card)
+              
+           
         
-            
-            
         }
-        
-            
-              
-               
-            
-        
     })
+    // const formationCards = document.querySelectorAll('.card')
+    // formationCards.forEach((formationCard)=>{
+    //     formationCard.onclick = function(e){
+    //         let tempCard
+    //         if(formationCard.classList[2] == position){
+    //             tempCard = formationCard.innerHTML
+    //             formationCard.innerHTML = card.innerHTML
+    //             card.innerHTML = tempCard
+    //         }else{
+    //             alert('not the same position')
+    //         }
+    //     }
+    // })
 }
-function deletePlayer(reserves){
+function closeContainer(selector) {
+    
+    const container = document.querySelector(selector)
+    container.style.display = 'none'
+  }
+  function showContainer(selector){
+    document.querySelectorAll('#pop-up').forEach((pop)=>{pop.style.display = 'none'})
+    const container = document.querySelector(selector)
+    if(selector == '.delete-players'){
+        deletePlayer()
+    }else if(selector == '.modify-players'){
+        modifyPlayer()
+    }
+    container.style.display = 'flex'
+  }
+function removePlayer(reserves){
     const cardscontent = document.querySelectorAll('.card .player-name p')
-    console.log(cardscontent)
-    // console.log(reserves)
     cardscontent.forEach((cardcontent)=>{
-        // console.log(cardcontent.innerText)
         const cardContentName = cardcontent.innerText
         reserves.forEach((reserve)=>{
             const reserveContentName = reserve.querySelector('.player-name p').innerText
-            // console.log(reserve.querySelector('.player-name p').innerText)
             if(cardContentName == reserveContentName){
                 reserve.style.display = 'none'
             }
         })
     })
-    
-    
-
-
-    // console.log(reserveCard)
-    // const reserveName = reserveCard.querySelector('.player-name p').textContent
-    // document.querySelectorAll('.card').forEach((carte)=>{
-    //     console.log(reserveName)
-    //     console.log(carte)
-    //     const cardPara = carte.querySelector('.player-name p')
-    //     // console.log(cardName)
-    //         if(cardPara){
-    //             const cardName = cardPara.textContent
-    //             if(cardName === reserveCard ){
-    //                 reserveCard.style.display = 'none'
-    //             }
-    //         }
-        
-    // })
+ 
 }
-// function swapPlayer(reserveCards,card) {
-    
-// }
-function addPlayer(player){
+function deletePlayer(){
+    const playerList = document.querySelector('.delete-list')
+    playerList.innerHTML= ''
+    fillContainerList(playerList)
+    console.log(playerList)
+}
+function modifyPlayer(){
+    const playerList = document.querySelector('.modify-list')
+    playerList.innerHTML = ''
+    fillContainerList(playerList)
+}
+
+function addAvailablePlayer(player,container){
     if(player.position == 'GK'){
         const newDiv = document.createElement('div')
         newDiv.innerHTML = `
-          <div class="carte reserve">
+          <div class="carte">
              
      
              <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
@@ -174,12 +187,12 @@ function addPlayer(player){
                        </div>
          
         `
-        reserveList.appendChild(newDiv)
+        container.appendChild(newDiv)
 
     }else{
         const newDiv = document.createElement('div')
         newDiv.innerHTML = `
-          <div class="carte reserve">
+          <div class="carte">
              
      
              <img src="img/badge_gold.webp" id="badge" alt="gold-badge">
@@ -218,28 +231,115 @@ function addPlayer(player){
                        </div>
          
         `
-        reserveList.appendChild(newDiv)
+        container.appendChild(newDiv)
     }
+}
+function fillContainerList(container){
+    players.forEach((player)=>{
+        addAvailablePlayer(player,container)
+    })
 }
 
 formationCards.forEach((card)=>{
     reserveList.innerHTML = ''
-    // removeFocus(formationCards)
     card.onclick = function(e){
-        // card.classList.add('focus')
-        // console.log(card.querySelector('#badge'))
         displayPlayers(card.classList[2],card)
-        deletePlayer(reserveList.querySelectorAll('.carte'))
-        // console.log(reserveList.querySelectorAll('.carte .player-name p'))
+        
+        // removePlayer(reserveList.querySelectorAll('.carte'))
+
         if(reserveList.children.length == 0){
-            reserveList.textContent =  'no player in this position'
+            reserveList.textContent =  'No players in this position'
         }
     }
 })
+function animateCard(card){
 
-// function removeFocus(formationCards) {
-//     formationCards.forEach((card)=>{
-//         card.classList.remove('focus')
-//     })
-// }
+}
+function addPlayerForm(formType){
+    if(formType == 'goalkeeper'){
+        const formGk = document.querySelector('#goalkeeper')
+        const playerName = document.getElementById("playerName").value
+        const overall = document.getElementById("overall").value
+        const diving = document.getElementById("diving").value
+        const handling = document.getElementById("handling").value
+        const kicking = document.getElementById("kicking").value
+        const reflexes = document.getElementById("reflexes").value
+        const speed = document.getElementById("speed").value
+        const positioning = document.getElementById("positioning").value
+        const playerCountry = document.getElementById("playerCountry").value
+        const playerClub = document.getElementById("playerClub").value
+        const playerPhoto = document.getElementById("playerPhoto").value
+        const countryFlag = document.getElementById("countryFlag").value
+        const clubLogo = document.getElementById("clubLogo").value
+
+        console.log(formGk)
+        formGk.onsubmit = function(e) {
+            e.preventDefault()
+
+            const goalkeeper = {
+                "name": playerName,
+                "photo": playerPhoto,
+                "position": "GK",
+                "nationality": playerCountry,
+                "flag": countryFlag,
+                "club": playerClub,
+                "logo": clubLogo,
+                "rating": overall,
+                "diving": diving,
+                "handling": handling,
+                "kicking": kicking,
+                "reflexes": reflexes,
+                "speed": speed,
+                "positioning": positioning
+            }
+            
+        }
+        
+
+
+
+    }else {
+        const formRegular = document.querySelector('#regular-player')
+        console.log(formRegular)
+        const playerName = document.getElementById("playerName").value
+        const overall = document.getElementById("overall").value
+        const shooting = document.getElementById("shooting").value
+        const passing = document.getElementById("passing").value
+        const dribbling = document.getElementById("dribbling").value
+        const pace = document.getElementById("pace").value
+        const defence = document.getElementById("defence").value
+        const physique = document.getElementById("physique").value
+        const playerCountry = document.getElementById("playerCountry").value
+        const playerClub = document.getElementById("playerClub").value
+        const playerPhoto = document.getElementById("playerPhoto").value
+        const countryFlag = document.getElementById("countryFlag").value
+        const clubLogo = document.getElementById("clubLogo").value
+        const position = document.getElementById("position").value
+
+        const player = {
+            "name": playerName,
+            "photo": playerPhoto,
+            "position": position, 
+            "nationality": playerCountry,
+            "flag": countryFlag,
+            "club": playerClub,
+            "logo": clubLogo,
+            "rating": overall,
+            "shooting": shooting,
+            "passing": passing,
+            "dribbling": dribbling,
+            "pace": pace,
+            "defence": defence,
+            "physique": physique
+        }
+
+
+
+    }
+}
+
+
+
+
+
 
