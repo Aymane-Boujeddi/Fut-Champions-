@@ -125,32 +125,24 @@
       
     </section>
     <section class="formulaire" id="pop-up" style="display: none;">
-      <!-- <div class="formation-selection">
-        <button onclick="changeFormation('.formation-1', '#position433')">
-          4-3-3
-        </button>
-        <button onclick="changeFormation('.formation-2', '#position442')">
-          4-4-2
-        </button>
-      </div> -->
+     
       <div class="close-btn" onclick="closeContainer('.formulaire')">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
           <path d="M18 6L6 18M6 6l12 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <select name="position" id="position" >
-        <!-- <option value="position">Position</option> -->
-
-        <option value="goalkeeper">GK</option>
-        <option value="centerback">CB</option>
-        <option value="leftback">LB</option>
-        <option value="rightback">RB</option>
-        <option value="centermidfielder">CM</option>
-        <option value="rightmidfielder">RM</option>
-        <option value="leftmidfielder">LM</option>
-        <option value="leftwing">LW</option>
-        <option value="rightwing">RW</option>
-        <option value="striker">ST</option>
+        <option value="none">position</option>
+        <option value="GK">GK</option>
+        <option value="CB">CB</option>
+        <option value="LB">LB</option>
+        <option value="RB">RB</option>
+        <option value="CM">CM</option>
+        <option value="RM">RM</option>
+        <option value="LM">LM</option>
+        <option value="LW">LW</option>
+        <option value="RW">RW</option>
+        <option value="ST">ST</option>
       </select>
       <!-- <select name="position" id="position442" >
           <option value="position">Position</option>
@@ -161,25 +153,26 @@
           <option value="centermidfielder">CM</option>
           <option value="rightmidfielder">RM</option>
           <option value="leftmidfielder">LM</option>
+        
           <option value="striker">ST</option>
           
       </select> -->
       <form action="submit" class="form" id="regular-player">
         <input type="text" id="playerName" placeholder="Player Name" />
     
-        <input type="number" id="overall" min="50" placeholder="Overall" />
+        <input type="number" id="overall" step="1" min="50" max="99" placeholder="Overall" />
     
-        <input type="number" id="shooting" min="20" placeholder="Shooting min(20)" />
+        <input type="number" id="shooting" step="1" min="30" max="99" placeholder="Shooting min(30)" />
     
-        <input type="number" id="passing" min="20" placeholder="Passing min(20)" />
+        <input type="number" id="passing" step="1" min="30" max="99" placeholder="Passing min(30)" />
     
-        <input type="number" id="dribbling" min="20" placeholder="Dribbling min(20)" />
+        <input type="number" id="dribbling" step="1" min="30" max="99" placeholder="Dribbling min(30)" />
     
-        <input type="number" id="pace" min="20" placeholder="Pace min(20)" />
+        <input type="number" id="pace" step="1" min="30" max="99" placeholder="Pace min(30)" />
     
-        <input type="number" id="defence" min="20" placeholder="Defence min(20)" />
+        <input type="number" id="defence" step="1" min="30" max="99" placeholder="Defence min(30)" />
     
-        <input type="number" id="physique" min="20" placeholder="Physique min(20)" />
+        <input type="number" id="physique" step="1" min="30" max="99" placeholder="Physique min(30)" />
     
         <input type="text" id="playerCountry" placeholder="Player country" />
     
@@ -197,20 +190,20 @@
     
       <form action="submit" class="form" id="goalkeeper">
         <input type="text" id="playerName" placeholder="Player Name" />
+           
+        <input type="number" id="overall" step="1" min="50" max="99" placeholder="Overall" />
     
-        <input type="number" id="overall" min="50" placeholder="Overall" />
+        <input type="number" id="diving" step="1" min="30" max="99" placeholder="Diving min(30)" />
     
-        <input type="number" id="diving" min="20" placeholder="Diving min(20)" />
+        <input type="number" id="handling" step="1" min="30" max="99" placeholder="Handling min(30)" />
     
-        <input type="number" id="handling" min="20" placeholder="Handling min(20)" />
+        <input type="number" id="kicking" step="1" min="30" max="99" placeholder="Kicking min(30)" />
     
-        <input type="number" id="kicking" min="20" placeholder="Kicking min(20)" />
+        <input type="number" id="reflexes" step="1" min="30" max="99" placeholder="Reflexes min(30)" />
     
-        <input type="number" id="reflexes" min="20" placeholder="Reflexes min(20)" />
-    
-        <input type="number" id="speed" min="20" placeholder="Speed min(20)" />
+        <input type="number" id="speed" step="1" min="30" max="99" placeholder="Speed min(30)" />
 
-        <input type="number" id="positioning" min="20" placeholder="Positioning min(20)" />
+        <input type="number" id="positioning" step="1" min="30" max="99" placeholder="Positioning min(30)" />
 
         <input type="text" id="playerCountry" placeholder="Player country" />
     
