@@ -210,7 +210,7 @@ function editPlayerForm(playerPosition,player){
     position.value = playerPosition
     if(position.value == 'GK'){
         const formGKbtn = document.querySelector('#goalkeeper button')
-        
+        const formGK = document.querySelector('#goalkeeper')
        
 
             const playerName = document.getElementById("playerName")
@@ -258,11 +258,13 @@ player.photo = playerPhoto.value
 player.logo = clubLogo.value
 player.flag = countryFlag.value
             alert("player modified successfully")
+            formGK.reset()
         }
 
     
     }else {
         const formRegularbtn = document.querySelector('#regular-player button')
+        const formRegular = document.querySelector('#regular-player')
         
             const playerName = document.getElementById("playerName")
             const overall = document.getElementById("overall")
@@ -295,7 +297,8 @@ player.flag = countryFlag.value
             countryFlag.value = player.flag
             position.value = player.position
 
-        formRegularbtn.onclick = function(e) {
+        formRegular.onsubmit = function(e) {
+            e.preventDefault()
             player.name = playerName.value
             player.rating = overall.value
             player.shooting = shooting.value
@@ -312,8 +315,11 @@ player.flag = countryFlag.value
             player.position = position.value
 
             console.log(player)
+            
+
 
 alert("player modified successfully")
+formRegular.reset()
 
         }
     }
@@ -433,117 +439,7 @@ formationCards.forEach((card)=>{
         }
     }
 })
-// function animateCard(card){
 
-// }
-// function addPlayerForm(formType){
-//     if(formType == 'goalkeeper'){
-//         const formGk = document.querySelector('#goalkeeper')
-        
-//         console.log(formGk)
-//         formGk.onsubmit = function(e) {
-//             e.preventDefault()
-
-//             const playerName = document.getElementById("playerName").value
-//             const overall = document.getElementById("overall").value
-//             const diving = document.getElementById("diving").value
-//             const handling = document.getElementById("handling").value
-//             const kicking = document.getElementById("kicking").value
-//             const reflexes = document.getElementById("reflexes").value
-//             const speed = document.getElementById("speed").value
-//             const positioning = document.getElementById("positioning").value
-//             const playerCountry = document.getElementById("playerCountry").value
-//             const playerClub = document.getElementById("playerClub").value
-//             const playerPhoto = document.getElementById("playerPhoto").value
-//             const countryFlag = document.getElementById("countryFlag").value
-//             const clubLogo = document.getElementById("clubLogo").value
-
-//             const goalkeeper = {
-//                 "name": playerName,
-//                 "photo": playerPhoto,
-//                 "position": "GK",
-//                 "nationality": playerCountry,
-//                 "flag": countryFlag,
-//                 "club": playerClub,
-//                 "logo": clubLogo,
-//                 "rating": overall,
-//                 "diving": diving,
-//                 "handling": handling,
-//                 "kicking": kicking,
-//                 "reflexes": reflexes,
-//                 "speed": speed,
-//                 "positioning": positioning
-//             }
-//             if(overall && diving && handling && kicking && speed && reflexes && positioning && playerClub && playerCountry && playerPhoto && countryFlag && clubLogo && position && preventNameRepetition(playerName)){
-//                 availablePlayers.push(goalkeeper)
-//                 alert("Player added successfully")
-//                 // formGk.reset()
-    
-//             }else{
-//                 alert("Please fill out all required fields")
-//             }
-//         }
-        
-
-
-
-//     }else {
-//         const formRegular = document.querySelector('#regular-player')
-//         console.log(formRegular)
-        
-//         formRegular.onsubmit = function(e) {
-//             e.preventDefault()
-//         const playerName = document.getElementById("playerName").value
-//         const overall = document.getElementById("overall").value
-//         const shooting = document.getElementById("shooting").value
-//         const passing = document.getElementById("passing").value
-//         const dribbling = document.getElementById("dribbling").value
-//         const pace = document.getElementById("pace").value
-//         const defence = document.getElementById("defence").value
-//         const physique = document.getElementById("physique").value
-//         const playerCountry = document.getElementById("playerCountry").value
-//         const playerClub = document.getElementById("playerClub").value
-//         const playerPhoto = document.getElementById("playerPhoto").value
-//         const countryFlag = document.getElementById("countryFlag").value
-//         const clubLogo = document.getElementById("clubLogo").value
-//         const position = document.getElementById("position").value
-
-//         const player = {
-//             "name": playerName,
-//             "photo": playerPhoto,
-//             "position": position, 
-//             "nationality": playerCountry,
-//             "flag": countryFlag,
-//             "club": playerClub,
-//             "logo": clubLogo,
-//             "rating": overall,
-//             "shooting": shooting,
-//             "passing": passing,
-//             "dribbling": dribbling,
-//             "pace": pace,
-//             "defending": defence,
-//             "physical": physique
-//         }
-//         if(overall && shooting && passing && dribbling && pace && defence && physique && playerClub && playerCountry && playerPhoto && countryFlag && clubLogo && position ){
-//             availablePlayers.push(player)
-//             alert("Player added successfully")
-//             formRegular.reset()
-
-//         }else{
-//             alert("Please fill out all required fields")
-//         }
-        
-
-//         }
-
-
-//     }
-// }
-// function clearform(form){
-//     form.querySelectorAll('input').forEach(input=>
-//         console.log(input)
-//         input.reset())
-// }
 function addPlayerForm(formType,playerForm) {
     const errorMessages = document.querySelectorAll('span')
     errorMessages.forEach(span=>span.remove())
