@@ -255,6 +255,7 @@ function editPlayerForm(playerPosition,player){
             alert("player modified successfully")
             formGK.reset();
             formGK.onclick = null;
+            document.querySelector('.formulaire').style.display = 'none'
 
         }
 
@@ -318,6 +319,7 @@ function editPlayerForm(playerPosition,player){
 alert("player modified successfully")
 formRegular.reset()
 formRegularbtn.onclick= null
+document.querySelector('.formulaire').style.display = 'none'
 
         }
     }
