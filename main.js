@@ -7,7 +7,6 @@ const formationCards = document.querySelectorAll('.card')
 let selectedForm = ''
 // const availablePlayers = []
 
-// console.log(typeof availablePlayers)
 changeform(position)
 
 
@@ -21,7 +20,10 @@ function changeFormation(formation,select){
     
 }
 function changeform(position){
-    document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
+    document.querySelectorAll('.form').forEach((form)=>{
+        form.style.display = 'none'
+        form.reset()
+    })
     
     position.addEventListener("change" , (e)=>{
         position.querySelector('option:first-child').style.display = 'none'
@@ -89,19 +91,7 @@ function displayPlayers(position,card){
         
         }
     })
-    // const formationCards = document.querySelectorAll('.card')
-    // formationCards.forEach((formationCard)=>{
-    //     formationCard.onclick = function(e){
-    //         let tempCard
-    //         if(formationCard.classList[2] == position){
-    //             tempCard = formationCard.innerHTML
-    //             formationCard.innerHTML = card.innerHTML
-    //             card.innerHTML = tempCard
-    //         }else{
-    //             alert('not the same position')
-    //         }
-    //     }
-    // })
+  
 }
 function closeContainer(selector) {
     
@@ -195,7 +185,11 @@ function modifyPlayer(){
 }
 function editPlayerForm(playerPosition,player){
     document.querySelector('.formulaire').style.display = 'flex'
-    document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
+    document.querySelectorAll('.form').forEach((form)=>{
+        form.style.display = 'none'
+        form.reset()
+    })
+    
     if(playerPosition == 'none'){
         document.querySelectorAll('.form').forEach((form)=>{form.style.display = 'none'})
     }
@@ -242,23 +236,26 @@ function editPlayerForm(playerPosition,player){
             clubLogo.value = player.logo
             countryFlag.value = player.flag
 
-        formGKbtn.onsubmit = function(e) {
+        formGKbtn.onclick = function(e) {
             e.preventDefault()
             player.name = playerName.value
-player.rating = overall.value
-player.diving = diving.value
-player.handling = handling.value
-player.kicking = kicking.value
-player.reflexes = reflexes.value
-player.speed = speed.value
-player.positioning = positioning.value
-player.nationality = playerCountry.value
-player.club = playerClub.value
-player.photo = playerPhoto.value
-player.logo = clubLogo.value
-player.flag = countryFlag.value
+            player.rating = overall.value
+            player.diving = diving.value
+            player.handling = handling.value
+            player.kicking = kicking.value
+            player.reflexes = reflexes.value
+            player.speed = speed.value
+            player.positioning = positioning.value
+            player.nationality = playerCountry.value
+            player.club = playerClub.value
+            player.photo = playerPhoto.value
+            player.logo = clubLogo.value
+            player.flag = countryFlag.value
+            
             alert("player modified successfully")
-            formGK.reset()
+            formGK.reset();
+            formGK.onclick = null;
+
         }
 
     
@@ -297,7 +294,7 @@ player.flag = countryFlag.value
             countryFlag.value = player.flag
             position.value = player.position
 
-        formRegular.onsubmit = function(e) {
+        formRegularbtn.onclick = function(e) {
             e.preventDefault()
             player.name = playerName.value
             player.rating = overall.value
@@ -320,6 +317,7 @@ player.flag = countryFlag.value
 
 alert("player modified successfully")
 formRegular.reset()
+formRegularbtn.onclick= null
 
         }
     }
